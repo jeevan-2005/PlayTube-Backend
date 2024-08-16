@@ -19,4 +19,9 @@ import { userRouter } from "./routes/user.routes.js";
 //routes declaration
 app.use("/api/v1/users", userRouter);
 
+
+app.get("/health-check", (req, res) => {
+  res.send({msg: "Health-Check done. Server is running fine."});
+})
+
 export default app;
