@@ -23,8 +23,6 @@ const generateAccessAndRefreshToken = async (userId) => {
   }
 };
 
-
-
 const registerUser = asyncHanlder(async (req, res) => {
   // get user details fron frontend
   // validation
@@ -112,7 +110,8 @@ const loginUser = asyncHanlder(async (req, res) => {
   // return response
 
   const { username, email, password } = req.body;
-  if (!username || !email) {
+  if (!(username || email)) {
+    // or -> (!username && !email)
     throw new ApiError(400, "username or email is required");
   }
 
